@@ -18,6 +18,20 @@ app.get("/users", async (req, res) => {
   }
 });
 
+app.get("/users/:id", async (req, res)=>{
+  try{
+    const {id} = req.params
+    const result = await pool.query(
+      'SELECT * FROM users WHERE id=$1',
+      [id]
+    )
+    res.json(result.rows[0])
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+})
+
 app.post("/users", async (req, res) => {
   try{
     const {name, age} = req.body
@@ -32,6 +46,8 @@ app.post("/users", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 })
+
+
 
 
 app.listen(3000, () => {
