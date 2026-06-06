@@ -47,6 +47,21 @@ app.post("/users", async (req, res) => {
   }
 })
 
+app.put("/users/:id", async(req, res)=>{
+  try{
+    const {id} = req.params
+    const {name, age} = req.body
+    const result = await pool.query(
+      'UPDATE users SET name=$1, age=$2 WHERE id=$3 RETURNING *',
+      [name, age, id]
+    )
+    res.json(result.rows[0])
+  }catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+})
+
 
 
 
