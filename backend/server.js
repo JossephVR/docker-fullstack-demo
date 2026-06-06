@@ -18,7 +18,22 @@ app.get("/users", async (req, res) => {
   }
 });
 
+app.post("/users", async (req, res) => {
+  try{
+    const {name, age} = req.body
+    const result = await pool.query(
+      'INSERT INTO users (name, age) VALUES ($1, $2) RETURNING *',
+      [name, age]
+    )
+    res.json(result.rows[0])
+  
+  }catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+})
+
 
 app.listen(3000, () => {
-  console.log("Backend running");
+  console.log("Backend running on http://localhost:3000");
 });
