@@ -62,6 +62,20 @@ app.put("/users/:id", async(req, res)=>{
   }
 })
 
+app.delete("/users/:id", async(req, res)=>{
+  try{
+    const {id} = req.params
+    await pool.query(
+      'DELETE FROM users WHERE id=$1',
+      [id]
+    )
+    res.send("User deleted")
+  }catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+})
+
 
 
 
