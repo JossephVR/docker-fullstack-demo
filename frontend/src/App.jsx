@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NewUserPage from "./pages/UsersPage";
 
 function App() {
@@ -7,7 +7,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<NewUserPage/>}/>
+        <Route path="/" element={<Navigate to="/users" />}/>
+        <Route path="/users" element={<NewUserPage/>}/>
       </Routes>
     </BrowserRouter>
   );
