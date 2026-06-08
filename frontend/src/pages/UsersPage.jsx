@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 function UsersPage() {
   const [users, setUsers] = useState([])
 
-  const Navigate = useNavigate()
+  const navigate = useNavigate()
 
   useEffect(() => {
     getUsers().then(setUsers)
@@ -19,10 +19,11 @@ function UsersPage() {
   return (
     <div>
       <h1>Users</h1>
-      <button onClick={()=>{Navigate('/users/new')}}>Create new user</button>
+      <button onClick={()=>{navigate('/users/new')}}>Create new user</button>
       {users.map(user => (
         <div key={user.id}>
           <p>{user.name} - {user.age}</p>
+          <button onClick={() => navigate(`/users/${user.id}/edit`)}>Edit</button>
           <button onClick={() => handleDelete(user.id)}>Delete</button>
         </div>
       ))}
