@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getUsers } from '../api/api'
+import { getUsers, deleteUser } from '../api/api'
 import { useNavigate } from 'react-router-dom'
 
 function UsersPage() {
@@ -11,6 +11,10 @@ function UsersPage() {
     getUsers().then(setUsers)
   }, [])
 
+  const handleDelete = async (id) => {
+    await deleteUser(id)
+    setUsers(users.filter(user => user.id !== id))
+  }
 
   return (
     <div>
@@ -19,6 +23,7 @@ function UsersPage() {
       {users.map(user => (
         <div key={user.id}>
           <p>{user.name} - {user.age}</p>
+          <button onClick={() => handleDelete(user.id)}>Delete</button>
         </div>
       ))}
     </div>
