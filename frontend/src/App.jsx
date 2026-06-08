@@ -1,24 +1,15 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NewUserPage from "./pages/UsersPage";
 
 function App() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/users")
-      .then(res => res.json())
-      .then(data => setUsers(data));
-  }, []);
 
   return (
-    <div>
-      <h1>Users data right here</h1>
-
-      {users.map(user => (
-        <div key={user.id}>
-          <p>{user.name} - {user.age}</p>
-        </div>
-      ))}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<NewUserPage/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
