@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getUsers, deleteUser } from '../api/api'
 import { useNavigate } from 'react-router-dom'
+import  UserCard from '../components/UserCard'
 
 function UsersPage() {
   const [users, setUsers] = useState([])
@@ -18,14 +19,19 @@ function UsersPage() {
 
   return (
     <div>
-      <h1>Users</h1>
-      <button onClick={()=>{navigate('/users/new')}}>Create new user</button>
+      <h1>List of users</h1>
+      <div className="users-header">
+        <button className="btn-primary" onClick={() => navigate('/users/new')}>
+          + New User
+        </button>
+      </div>
       {users.map(user => (
-        <div key={user.id}>
-          <p>{user.name} - {user.age}</p>
-          <button onClick={() => navigate(`/users/${user.id}/edit`)}>Edit</button>
-          <button onClick={() => handleDelete(user.id)}>Delete</button>
-        </div>
+        <UserCard
+          key={user.id}
+          user={user}
+          onEdit={() => navigate(`/users/${user.id}/edit`)}
+          onDelete={() => handleDelete(user.id)}
+        />
       ))}
     </div>
   )

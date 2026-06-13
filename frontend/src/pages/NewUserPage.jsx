@@ -14,20 +14,24 @@ function NewUserPage() {
 
   return (
     <div>
-      <h1>New User</h1>
-      <input
-        placeholder="Name"
-        value={form.name}
-        onChange={e => setForm({ ...form, name: e.target.value })}
-      />
-      <input
-        placeholder="Age"
-        type="number"
-        value={form.age}
-        onChange={e => setForm({ ...form, age: e.target.value })}
-      />
-      <button onClick={handleSubmit}>Create</button>
-      <button onClick={() => navigate('/users')}>Cancel</button>
+      <h1>Edit User</h1>
+      <div className="form">
+        <input
+          placeholder="Name"
+          value={form.name}
+          onChange={e => setForm({ ...form, name: e.target.value })}
+        />
+        <input
+          placeholder="Age"
+          type="number"
+          value={form.age}
+          onChange={e => setForm({ ...form, age: e.target.value })}
+        />
+        <div className="form-actions">
+          <button className="btn-primary" onClick={handleSubmit}>Save</button>
+          <button className="btn-cancel" onClick={() => navigate('/users')}>Cancel</button>
+        </div>
+      </div>
     </div>
   )
 }

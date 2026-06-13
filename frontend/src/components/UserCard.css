@@ -1,0 +1,52 @@
+.user-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+  }
+  
+  .user-card:hover {
+    border-color: var(--accent);
+  }
+  
+  .user-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    color: var(--text-h);
+  }
+  
+  .user-info p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text);
+  }
+  
+  .user-actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .btn-edit {
+    background: var(--accent-light);
+    color: #a78bfa;
+  }
+  
+  .btn-edit:hover {
+    background: var(--accent);
+    color: white;
+  }
+  
+  .btn-delete {
+    background: rgba(220, 38, 38, 0.1);
+    color: #f87171;
+  }
+  
+  .btn-delete:hover {
+    background: var(--danger);
+    color: white;
+  }
