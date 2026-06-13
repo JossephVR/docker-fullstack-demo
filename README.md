@@ -8,6 +8,17 @@ A full-stack CRUD application for managing users, containerized with Docker usin
 - **Database:** PostgreSQL
 - **Infrastructure:** Docker, Docker Compose, Nginx
 
+## Screenshots
+
+### User List
+![User List](screenshots/users-list.png)
+
+### New User
+![New User](screenshots/new-user.png)
+
+### Delete Confirmation
+![Delete Confirmation](screenshots/delete-confirm.png)
+
 ## Architecture
 
 Three containerized services orchestrated with Docker Compose:
@@ -44,3 +55,4 @@ The backend reads database credentials from environment variables defined in `do
 - Create a new user
 - Edit an existing user
 - Delete a user with confirmation modal
+
